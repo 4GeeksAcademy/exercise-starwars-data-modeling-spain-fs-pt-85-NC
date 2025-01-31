@@ -19,7 +19,7 @@ class Usuario(Base):
     email = mapped_column(String(100), nullable=False, unique=True)
     creado = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     
-    favorito = relationship('Favorite', backref='user', lazy=True)
+    favorito = relationship('Favorite', backref='usuario', lazy=True)
 
 class Planeta(Base):
     __tablename__ = 'planeta'
@@ -36,7 +36,7 @@ class Planeta(Base):
     creado = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     editado = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
     
-    favorito = relationship('Favorite', backref='planet', lazy=True)
+    favorito = relationship('Favorite', backref='planeta', lazy=True)
 
 class Vehiculo(Base):
     __tablename__ = 'vehiculo'
@@ -55,7 +55,7 @@ class Vehiculo(Base):
     creado = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     editado = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
     
-    favorito = relationship('Favorite', backref='vehicle', lazy=True)
+    favorito = relationship('Favorite', backref='vehiculo', lazy=True)
 
 class Personajes(Base):
     __tablename__ = 'personajes'
@@ -73,9 +73,9 @@ class Personajes(Base):
     creado = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
     editado = mapped_column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
     
-    favorito = relationship('Favorite', backref='people', lazy=True)
+    favorito = relationship('Favorite', backref='personajes', lazy=True)
 
-class Favorite(Base):
+class Favoritos(Base):
     __tablename__ = 'favoritos'
     
     id = mapped_column(Integer, primary_key=True)
